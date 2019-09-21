@@ -43,6 +43,72 @@
             </objects>
             <point key="canvasLocation" x="19.53125" y="16.9921875"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="MTc-UG-1rE">
+            <objects>
+                <viewController id="YxP-rB-PrZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NhE-D0-6Pa">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="334" translatesAutoresizingMaskIntoConstraints="NO" id="hLt-Gu-DDc">
+                                <rect key="frame" x="184" y="131" width="400" height="740"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AST Tag ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afb-ho-Rhe">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keo-T4-MpT">
+                                        <rect key="frame" x="0.0" y="354.5" width="400" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="twR-YP-oNR">
+                                        <rect key="frame" x="0.0" y="709" width="400" height="31"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVN-2T-xnu">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="31"/>
+                                                <color key="backgroundColor" red="0.20000000000000001" green="0.69019607839999997" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                                <state key="normal" title="EDIT">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4w-Pi-v5j">
+                                                <rect key="frame" x="200" y="0.0" width="200" height="31"/>
+                                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                                                <size key="titleShadowOffset" width="1" height="1"/>
+                                                <state key="normal" title="CANCEL">
+                                                    <color key="titleColor" red="0.20000000000000001" green="0.69019607839999997" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleShadowColor" red="0.20000000000000001" green="0.69019607839999997" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <rect key="contentStretch" x="0.80000000000000004" y="0.0" width="1" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="Pue-Pu-2dD"/>
+                                    <constraint firstAttribute="width" constant="400" id="ex9-k5-FBR"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hLt-Gu-DDc" firstAttribute="leading" secondItem="t3s-5C-uwc" secondAttribute="leading" constant="313" id="A9q-PK-wIf"/>
+                            <constraint firstItem="hLt-Gu-DDc" firstAttribute="top" secondItem="t3s-5C-uwc" secondAttribute="top" constant="301" id="skZ-yN-sFo"/>
+                            <constraint firstItem="hLt-Gu-DDc" firstAttribute="centerX" secondItem="NhE-D0-6Pa" secondAttribute="centerX" id="xKx-N3-rx0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="t3s-5C-uwc"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="avV-DC-oFh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="748.4375" y="-543.1640625"/>
+        </scene>
     </scenes>
     <resources>
         <image name="logo" width="600" height="600.5"/>
