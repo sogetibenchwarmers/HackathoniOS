@@ -51,6 +51,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="btnScanBarcode" destination="RN1-1Q-ke5" id="dgg-Fd-VeA"/>
                         <segue destination="YxP-rB-PrZ" kind="show" identifier="toDeviceInfoController" id="DfE-a0-PQ8"/>
                     </connections>
                 </viewController>
@@ -67,20 +68,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="hLt-Gu-DDc">
-                                <rect key="frame" x="15" y="35" width="140" height="974"/>
+                                <rect key="frame" x="15" y="35" width="738" height="974"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BHw-WR-g57">
-                                        <rect key="frame" x="0.0" y="0.0" width="140" height="929"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="738" height="929"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Asset Tag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6sE-Fp-mem">
-                                            <rect key="frame" x="0.0" y="0.0" width="140" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="738" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField key="tableFooterView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="Z8M-zS-tCn">
-                                            <rect key="frame" x="0.0" y="44" width="140" height="30"/>
+                                            <rect key="frame" x="0.0" y="44" width="738" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -88,10 +89,10 @@
                                         </textField>
                                     </tableView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="51Y-HL-4dk">
-                                        <rect key="frame" x="0.0" y="944" width="140" height="30"/>
+                                        <rect key="frame" x="0.0" y="944" width="738" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfE-IJ-hQI">
-                                                <rect key="frame" x="0.0" y="0.0" width="70" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="369" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="HIl-5R-rVU"/>
                                                     <constraint firstAttribute="width" constant="70" id="Ygk-OL-ZXw"/>
@@ -99,7 +100,7 @@
                                                 <state key="normal" title="Edit"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wk1-xd-zvh">
-                                                <rect key="frame" x="70" y="0.0" width="70" height="30"/>
+                                                <rect key="frame" x="369" y="0.0" width="369" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="70" id="Zvb-1U-OVR"/>
                                                     <constraint firstAttribute="height" constant="30" id="bQy-M2-bsI"/>
