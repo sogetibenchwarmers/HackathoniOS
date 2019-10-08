@@ -12,8 +12,9 @@ import SwiftyJSON
 
 class DeviceInfoController: UIViewController {
     
-    //Constants
     var barcode: String?
+    let url = "https://learnappmaking.com/ex/users.json"
+    
     
     @IBOutlet weak var tfAssetTag: UITextField!
     @IBOutlet weak var tfName: UITextField!
@@ -28,6 +29,7 @@ class DeviceInfoController: UIViewController {
         super.viewDidLoad()
         print("device info controller loading")
         
+
         let fields = [
             self.tfAssetTag!,
             self.tfName!,
@@ -48,11 +50,33 @@ class DeviceInfoController: UIViewController {
         
         tfAssetTag.text = self.barcode
         
+        // Get Request
+        Alamofire.request(url, method: .get).responseJSON {
+                response in
+                if response.result.isSuccess {
+                    print("Success! Got the data")
+                    
+                    let json : JSON = JSON(response.result.value!)
+                    print(json)
+        //                    self.updateWeatherData(json: weatherJSON)
+                }
+                else {
+                    print("Error \(response.result.error)")
+        //                    self.cityLabel.text = "Connection Issues"
+                    
+                }
+            }
+        
     }
     
     //MARK: - Networking
     /***************************************************************/
     
-    //Write the getWeatherData method here:
+    //Write the getData method here:
+      func getData(url: String, parameters: [String : String]){
+            
+            
+            
+        }
     
 }
