@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class DeviceInfoController: UIViewController {
+    
+    //Constants
     var barcode: String?
     
     @IBOutlet weak var tfAssetTag: UITextField!
@@ -45,5 +49,10 @@ class DeviceInfoController: UIViewController {
         tfAssetTag.text = self.barcode
         
     }
+    
+    //MARK: - Networking
+    /***************************************************************/
+    
+    //Write the getWeatherData method here:
     
 }
