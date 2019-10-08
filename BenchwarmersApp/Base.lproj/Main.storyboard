@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YxP-rB-PrZ">
-    <device id="ipad9_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YxP-rB-PrZ">
+    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,13 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="OBb-6T-HfP">
-                                <rect key="frame" x="84" y="110" width="600" height="250"/>
+                                <rect key="frame" x="84" y="90" width="600" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="DZ1-vx-quG"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RN1-1Q-ke5">
-                                <rect key="frame" x="259" y="450" width="250" height="80"/>
+                                <rect key="frame" x="259" y="430" width="250" height="80"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.69019607839999997" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="52j-tX-J7G"/>
@@ -64,11 +62,11 @@
             <objects>
                 <viewController id="YxP-rB-PrZ" customClass="DeviceInfoController" customModule="BenchwarmersApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NhE-D0-6Pa">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="712" height="984"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="hLt-Gu-DDc">
-                                <rect key="frame" x="15" y="35" width="140" height="974"/>
+                                <rect key="frame" x="15" y="15" width="140" height="954"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="ZaJ-vf-09O">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="80"/>
@@ -87,7 +85,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="8dU-pP-Q5h"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -109,7 +106,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="bYk-3H-0ZY"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -131,7 +127,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Lf2-oY-PRh"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -196,7 +191,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="gP5-IS-Rya"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -218,7 +212,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="whT-dT-fsp"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -240,16 +233,15 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="GF0-Pv-3q0"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ORi-7e-AfT" userLabel="Expandable View">
-                                        <rect key="frame" x="0.0" y="701" width="140" height="239"/>
+                                        <rect key="frame" x="0.0" y="701" width="140" height="219"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="51Y-HL-4dk" userLabel="Buttons">
-                                        <rect key="frame" x="0.0" y="944" width="140" height="30"/>
+                                        <rect key="frame" x="0.0" y="924" width="140" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfE-IJ-hQI">
                                                 <rect key="frame" x="0.0" y="0.0" width="70" height="30"/>
@@ -302,15 +294,28 @@
             <objects>
                 <viewController id="8eh-nc-j9B" customClass="ScannerController" customModule="BenchwarmersApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vl8-Hd-Lnf">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="712" height="984"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="zaP-5j-en2">
+                                <rect key="frame" x="206" y="342" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="zaP-5j-en2" secondAttribute="height" multiplier="1:1" id="NtO-kM-kFR"/>
+                                    <constraint firstAttribute="width" constant="300" id="zcr-sN-JeK"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zaP-5j-en2" firstAttribute="centerX" secondItem="vl8-Hd-Lnf" secondAttribute="centerX" id="Svv-b6-TZi"/>
+                            <constraint firstItem="zaP-5j-en2" firstAttribute="centerY" secondItem="vl8-Hd-Lnf" secondAttribute="centerY" id="rvn-Gm-FGl"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="j3H-Rh-E3X"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kk6-S9-Lp8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="837"/>
+            <point key="canvasLocation" x="19.53125" y="836.71875"/>
         </scene>
     </scenes>
     <resources>
