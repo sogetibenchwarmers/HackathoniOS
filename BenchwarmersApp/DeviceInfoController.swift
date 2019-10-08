@@ -58,7 +58,7 @@ class DeviceInfoController: UIViewController {
                     
                     let json : JSON = JSON(response.result.value!)
                     print(json)
-        //                    self.updateWeatherData(json: weatherJSON)
+                  self.updateData(json: json)
                 }
                 else {
                     print("Error \(response.result.error)")
@@ -78,5 +78,17 @@ class DeviceInfoController: UIViewController {
             
             
         }
+    
+    //MARK: - JSON Parsing
+     /***************************************************************/
+    
+     
+     //Write the updateWeatherData method here:
+     func updateData(json : JSON) {
+         
+        let tempResult = json[0]["age"]
+        print(tempResult)
+         
+     }
     
 }
