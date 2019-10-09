@@ -1,0 +1,6 @@
+framework module Pods_BenchwarmersApp_BenchwarmersAppUITests {
+  umbrella header "Pods-BenchwarmersApp-BenchwarmersAppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
