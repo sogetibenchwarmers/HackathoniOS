@@ -11,17 +11,15 @@ import UIKit
 
 class DeviceDataModel {
 
-    var lastName : String = ""
-    var age : Int = 0
-    var name: String = ""
     var assetTag: String = ""
-    //if data is int, need to convert to string
-    var OwnedBy: String = ""
-    var Status: String = ""
-    var SupportGroup: String = ""
-    var AssignmentGroup: String = ""
-    var SubLocation: String = ""
-    var Location: String = ""
+    var name: String = ""
+    var ownedBy: String = ""
+    var status: String = ""
+    var supportGroup: String = ""
+    var assignmentGroup: String = ""
+    var subLocation: String = ""
+    var location: String = ""
+    var id : String = " "
     
     
     
