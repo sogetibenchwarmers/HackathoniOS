@@ -85,15 +85,19 @@ class DeviceInfoController: UIViewController {
         // which could cause an error if no data came
         if let id = json["id"].string {
             print(json)
-//        if let ageResult = json[0]["age"].int {
-//        let lastNameResult = json[0]["last_name"].stringValue
         deviceDataModel.name = json["name"].stringValue
         deviceDataModel.ownedBy = json["ownedBy"].stringValue
         deviceDataModel.status = json["status"].stringValue
         deviceDataModel.supportGroup = json["supportGroup"].stringValue
         deviceDataModel.assignmentGroup = json["assignmentGroup"].stringValue
         deviceDataModel.subLocation = json["subLocation"].stringValue
-        deviceDataModel.location = json["location"].stringValue
+        deviceDataModel.locationName = json["location"]["name"].stringValue
+        deviceDataModel.locationStreet = json["location"]["street"].stringValue
+        deviceDataModel.locationCity = json["location"]["city"].stringValue
+        deviceDataModel.locationState = json["location"]["state"].stringValue
+        deviceDataModel.locationStreet = json["location"]["street"].stringValue
+        deviceDataModel.locationZip = json["location"]["zip"].stringValue
+        deviceDataModel.locationCountry = json["location"]["Country"].stringValue
             
         updateUIWithDeviceData()
             
@@ -114,7 +118,7 @@ class DeviceInfoController: UIViewController {
         tfSupportGroup.text = deviceDataModel.supportGroup
         tfAssignmentGroup.text = deviceDataModel.assignmentGroup
         tvSubLocation.text = deviceDataModel.subLocation
-        tvLocation.text = deviceDataModel.location
+        tvLocation.text = deviceDataModel.locationName
     }
     
 }

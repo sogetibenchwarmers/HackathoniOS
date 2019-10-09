@@ -18,7 +18,13 @@ class DeviceDataModel {
     var supportGroup: String = ""
     var assignmentGroup: String = ""
     var subLocation: String = ""
-    var location: String = ""
+//    var location: ListFormatter = {}
+    var locationName: String = ""
+    var locationStreet: String = ""
+    var locationCity: String = ""
+    var locationState: String = ""
+    var locationZip: String = ""
+    var locationCountry: String = ""
     var id : String = " "
     
 }
