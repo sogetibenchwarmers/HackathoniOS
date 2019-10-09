@@ -13,8 +13,8 @@ import SwiftyJSON
 class DeviceInfoController: UIViewController {
     
     var barcode: String?
-    let url = "https://hackathon-netcore-api.azurewebsites.net/api/v1/assets"
     let deviceDataModel = DeviceDataModel()
+    let url = "https://hackathon-netcore-api.azurewebsites.net/api/v1/assets/"
     
     
     @IBOutlet weak var tfAssetTag: UITextField!
@@ -51,61 +51,56 @@ class DeviceInfoController: UIViewController {
         
         tfAssetTag.text = self.barcode
         
-        // Get Request
-        Alamofire.request(url, method: .get).responseJSON {
+        // GET Request
+        
+//        let assetId = self.barcode!
+        let assetId = "P0001"
+        var newURL = url + assetId
+        Alamofire.request(newURL, method: .get).responseJSON {
                 response in
                 if response.result.isSuccess {
                     print("Success! Got the data")
                     
                     let json : JSON = JSON(response.result.value!)
-                  self.updateData(json: json)
+                    self.updateData(json: json)
                 }
                 else {
                     print("Error \(response.result.error)")
-        //                    self.cityLabel.text = "Connection Issues"
+        //          TO DO: Display errors in UI
                     
                 }
             }
         
     }
     
-    //MARK: - Networking
-    /***************************************************************/
-    
-    //Write the getData method here:
-//      func getData(url: String, parameters: [String : String]){
-//
-//
-//
-//        }
     
     //MARK: - JSON Parsing
      /***************************************************************/
     
      
-     //Write the updateWeatherData method here:
      func updateData(json : JSON) {
         
         // if results of age are nil, block won't execute.
         // Needed so we don't have to force unwrapping of data,
         // which could cause an error if no data came
-        if let id = json["data"][0]["id"].string {
+        if let id = json["id"].string {
             print(json)
 //        if let ageResult = json[0]["age"].int {
 //        let lastNameResult = json[0]["last_name"].stringValue
-        deviceDataModel.name = json["data"][0]["name"].stringValue
-        deviceDataModel.ownedBy = json["data"][0]["ownedBy"].stringValue
-        deviceDataModel.status = json["data"][0]["status"].stringValue
-        deviceDataModel.supportGroup = json["data"][0]["supportGroup"].stringValue
-        deviceDataModel.assignmentGroup = json["data"][0]["assignmentGroup"].stringValue
-        deviceDataModel.subLocation = json["data"][0]["subLocation"].stringValue
-        deviceDataModel.location = json["data"][0]["location"].stringValue
+        deviceDataModel.name = json["name"].stringValue
+        deviceDataModel.ownedBy = json["ownedBy"].stringValue
+        deviceDataModel.status = json["status"].stringValue
+        deviceDataModel.supportGroup = json["supportGroup"].stringValue
+        deviceDataModel.assignmentGroup = json["assignmentGroup"].stringValue
+        deviceDataModel.subLocation = json["subLocation"].stringValue
+        deviceDataModel.location = json["location"].stringValue
             
         updateUIWithDeviceData()
+            
         }
         else {
             print("No ID found")
-//            cityLabel.text = "Not Found"
+//          TO DO - Add into UI
         }
          
      }
