@@ -118,7 +118,11 @@ class DeviceInfoController: UIViewController {
         tfSupportGroup.text = deviceDataModel.supportGroup
         tfAssignmentGroup.text = deviceDataModel.assignmentGroup
         tvSubLocation.text = deviceDataModel.subLocation
-        tvLocation.text = deviceDataModel.locationName
+        tvLocation.text = deviceDataModel.locationName +
+            "\n" + deviceDataModel.locationStreet +
+            "\n" + deviceDataModel.locationCity +
+            ", " + deviceDataModel.locationState +
+            ", " + deviceDataModel.locationZip
     }
     
 }
