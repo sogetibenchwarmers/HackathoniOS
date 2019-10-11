@@ -52,6 +52,12 @@ class DeviceInfoController: UIViewController {
             if response.result.isSuccess {
                 print("received device data")
                 let json = JSON(response.result.value!)
+                
+                // debug ... location, subLocation, status, ownedBy all null
+                // this was supposed to be the asset tag with the most info?
+                // double check with Tom
+                print(json)
+                
                 self.updateModel(json: json)
                 self.updateUI()
             }
