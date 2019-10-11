@@ -19,15 +19,11 @@ class HomeController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.btnScanBarcode.clipsToBounds = true
     }
     
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toScannerController" {
-            print("going to scanner controller now")
             let controller = segue.destination as? ScannerController
             controller?.barcodeScanned = { (code: String) in
-                print("about to go to device info controller")
                 self.barcode = code
                 self.performSegue(withIdentifier: "toDeviceInfoController", sender: nil)
             }
@@ -36,7 +32,6 @@ class HomeController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
         }
         else if segue.identifier == "toDeviceInfoController" {
-            print("going to device info controller now")
             let controller = segue.destination as? DeviceInfoController
             controller?.barcode = self.barcode
         }

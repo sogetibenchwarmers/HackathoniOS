@@ -13,10 +13,9 @@ import SwiftyJSON
 class DeviceInfoController: UIViewController {
     
     var barcode: String?
-    let deviceDataModel = DeviceDataModel()
-    let url = "https://hackathon-netcore-api.azurewebsites.net/api/v1/assets/"
-    
-    
+    var deviceDataModel = DeviceDataModel()
+    let baseAssetUrl = "https://hackathon-netcore-api.azurewebsites.net/api/v1/assets/"
+
     @IBOutlet weak var tfAssetTag: UITextField!
     @IBOutlet weak var tfName: UITextField!
     @IBOutlet weak var tfOwnedBy: UITextField!
@@ -25,104 +24,88 @@ class DeviceInfoController: UIViewController {
     @IBOutlet weak var tfAssignmentGroup: UITextField!
     @IBOutlet weak var tvSubLocation: UITextView!
     @IBOutlet weak var tvLocation: UITextView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         print("device info controller loading")
         
-
         let fields = [
-            self.tfAssetTag!,
-            self.tfName!,
-            self.tfOwnedBy!,
-            self.tfStatus!,
-            self.tfSupportGroup!,
-            self.tfAssignmentGroup!,
-            self.tvSubLocation!,
-            self.tvLocation!
+            tfAssetTag,
+            tfName,
+            tfOwnedBy,
+            tfStatus,
+            tfSupportGroup,
+            tfAssignmentGroup,
+            tvSubLocation,
+            tvLocation
         ]
+        formatFields(fields: fields as! Array<UIView>)
         
-        for field in fields {
-            field.layer.borderWidth = 2
-            field.layer.borderColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.0).cgColor
-            field.layer.cornerRadius = 5
-            field.clipsToBounds = true
-        }
+        // asset tag from ScannerController
+        // self.barcode
         
-        tfAssetTag.text = self.barcode
-        
-        // GET Request
-        
-//        let assetId = self.barcode!
-        let assetId = "P0001"
-        var newURL = url + assetId
-        Alamofire.request(newURL, method: .get).responseJSON {
-                response in
-                if response.result.isSuccess {
-                    print("Success! Got the data")
-                    
-                    let json : JSON = JSON(response.result.value!)
-                    self.updateData(json: json)
-                }
-                else {
-                    print("Error \(response.result.error)")
-        //          TO DO: Display errors in UI
-                    
-                }
+        // known asset tag for demo
+        let assetTag = "P1000892"
+        let assetUrl = baseAssetUrl + assetTag
+        Alamofire.request(assetUrl, method: .get).responseJSON {
+            response in
+            if response.result.isSuccess {
+                print("received device data")
+                let json = JSON(response.result.value!)
+                
+                // debug ... location, subLocation, status, ownedBy all null
+                // this was supposed to be the asset tag with the most info?
+                // double check with Tom
+                print(json)
+                
+                self.updateModel(json: json)
+                self.updateUI()
             }
+            else {
+                print("error getting device data")
+                let json = JSON(response.result.value!)
+                self.displayError(
+                    errorTitle: json["title"].stringValue,
+                    errorMessage: json["detail"].stringValue
+                )
+            }
+        }
         
     }
     
-    
-    //MARK: - JSON Parsing
-     /***************************************************************/
-    
-     
-     func updateData(json : JSON) {
-        
-        // if results of age are nil, block won't execute.
-        // Needed so we don't have to force unwrapping of data,
-        // which could cause an error if no data came
-        if let id = json["id"].string {
-            print(json)
+     func updateModel(json: JSON) {
+        deviceDataModel.id = json["id"].stringValue
+        deviceDataModel.assetTag = json["assetTag"].stringValue
         deviceDataModel.name = json["name"].stringValue
         deviceDataModel.ownedBy = json["ownedBy"].stringValue
+        deviceDataModel.location = formatLocation(locationJson: json["location"])
+        deviceDataModel.locationId = json["location"]["id"].stringValue
+        deviceDataModel.subLocation = formatLocation(locationJson: json["subLocation"])
+        deviceDataModel.subLocationId = json["subLocation"]["id"].stringValue
         deviceDataModel.status = json["status"].stringValue
-        deviceDataModel.supportGroup = json["supportGroup"].stringValue
+        deviceDataModel.supportGroup = json["supportGroup"]["name"].stringValue
+        deviceDataModel.supportGroupId = json["supportGroup"]["id"].stringValue
         deviceDataModel.assignmentGroup = json["assignmentGroup"].stringValue
-        deviceDataModel.subLocation = json["subLocation"].stringValue
-        deviceDataModel.locationName = json["location"]["name"].stringValue
-        deviceDataModel.locationStreet = json["location"]["street"].stringValue
-        deviceDataModel.locationCity = json["location"]["city"].stringValue
-        deviceDataModel.locationState = json["location"]["state"].stringValue
-        deviceDataModel.locationStreet = json["location"]["street"].stringValue
-        deviceDataModel.locationZip = json["location"]["zip"].stringValue
-        deviceDataModel.locationCountry = json["location"]["Country"].stringValue
-            
-        updateUIWithDeviceData()
-            
-        }
-        else {
-            print("No ID found")
-//          TO DO - Add into UI
-        }
-         
      }
-    
-    //MARK: - UI Updates
-     /***************************************************************/
-    func updateUIWithDeviceData() {
+
+    func updateUI() {
+        tfAssetTag.text = deviceDataModel.assetTag
         tfName.text = deviceDataModel.name
         tfOwnedBy.text = deviceDataModel.ownedBy
         tfStatus.text = deviceDataModel.status
         tfSupportGroup.text = deviceDataModel.supportGroup
         tfAssignmentGroup.text = deviceDataModel.assignmentGroup
         tvSubLocation.text = deviceDataModel.subLocation
-        tvLocation.text = deviceDataModel.locationName +
-            "\n" + deviceDataModel.locationStreet +
-            "\n" + deviceDataModel.locationCity +
-            ", " + deviceDataModel.locationState +
-            ", " + deviceDataModel.locationZip
+        tvLocation.text = deviceDataModel.location
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toDeviceEditController" {
+            let controller = segue.destination as? DeviceEditController
+            controller?.deviceDataModel = self.deviceDataModel
+        }
+    
     }
     
 }
