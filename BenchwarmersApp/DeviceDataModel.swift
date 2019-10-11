@@ -11,21 +11,18 @@ import UIKit
 
 class DeviceDataModel {
 
-    var assetTag: String = ""
-    var name: String = ""
-    var ownedBy: String = ""
-    var status: String = ""
-    var supportGroup: String = ""
-    var assignmentGroup: String = ""
-    var subLocation: String = ""
-//    var location: ListFormatter = {}
-    var locationName: String = ""
-    var locationStreet: String = ""
-    var locationCity: String = ""
-    var locationState: String = ""
-    var locationZip: String = ""
-    var locationCountry: String = ""
-    var id : String = " "
-    
+    var id = ""
+    var assetTag = ""
+    var name = ""
+    var ownedBy = ""
+    var location = ""
+    var locationId = ""
+    var subLocation = ""
+    var subLocationId = ""
+    var status = ""
+    var supportGroup = ""
+    var supportGroupId = ""
+    var assignmentGroup = ""
+
 }
 
