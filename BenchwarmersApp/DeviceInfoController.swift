@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class DeviceInfoController: DeviceController {
+class DeviceInfoController: UIViewController {
     
     var barcode: String?
     var deviceDataModel = DeviceDataModel()
@@ -48,22 +48,22 @@ class DeviceInfoController: DeviceController {
         let assetTag = "P1000892"
         let assetUrl = baseAssetUrl + assetTag
         Alamofire.request(assetUrl, method: .get).responseJSON {
-                response in
-                if response.result.isSuccess {
-                    print("received device data")
-                    let json = JSON(response.result.value!)
-                    self.updateModel(json: json)
-                    self.updateUI()
-                }
-                else {
-                    print("error getting device data")
-                    let json = JSON(response.result.value!)
-                    self.displayError(
-                        errorTitle: json["title"].stringValue,
-                        errorMessage: json["detail"].stringValue
-                    )
-                }
+            response in
+            if response.result.isSuccess {
+                print("received device data")
+                let json = JSON(response.result.value!)
+                self.updateModel(json: json)
+                self.updateUI()
             }
+            else {
+                print("error getting device data")
+                let json = JSON(response.result.value!)
+                self.displayError(
+                    errorTitle: json["title"].stringValue,
+                    errorMessage: json["detail"].stringValue
+                )
+            }
+        }
         
     }
     

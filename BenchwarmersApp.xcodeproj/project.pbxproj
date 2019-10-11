@@ -10,7 +10,8 @@
 		136C7195C8791B876DD628D6 /* Pods_BenchwarmersApp_BenchwarmersAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE1DCFF15D8781F0988CA17 /* Pods_BenchwarmersApp_BenchwarmersAppUITests.framework */; };
 		8E43CE8B235035BA00AD66D2 /* AlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43CE8A235035BA00AD66D2 /* AlertExtension.swift */; };
 		8E43CE8F235043E600AD66D2 /* DeviceEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43CE8E235043E600AD66D2 /* DeviceEditController.swift */; };
-		8E43CE912350467C00AD66D2 /* DeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43CE902350467C00AD66D2 /* DeviceController.swift */; };
+		8E43CE912350467C00AD66D2 /* FormattingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43CE902350467C00AD66D2 /* FormattingExtension.swift */; };
+		8E43CE932350541300AD66D2 /* LocationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E43CE922350541300AD66D2 /* LocationPicker.swift */; };
 		8E7BCD902324AAD60026243F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7BCD8F2324AAD60026243F /* AppDelegate.swift */; };
 		8E7BCD952324AAD60026243F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E7BCD932324AAD60026243F /* Main.storyboard */; };
 		8E7BCD9A2324AAD80026243F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E7BCD982324AAD80026243F /* LaunchScreen.storyboard */; };
@@ -50,7 +51,8 @@
 		8355EE64541C9FC296367198 /* Pods-BenchwarmersAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BenchwarmersAppTests.release.xcconfig"; path = "Target Support Files/Pods-BenchwarmersAppTests/Pods-BenchwarmersAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		8E43CE8A235035BA00AD66D2 /* AlertExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertExtension.swift; sourceTree = "<group>"; };
 		8E43CE8E235043E600AD66D2 /* DeviceEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceEditController.swift; sourceTree = "<group>"; };
-		8E43CE902350467C00AD66D2 /* DeviceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceController.swift; sourceTree = "<group>"; };
+		8E43CE902350467C00AD66D2 /* FormattingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattingExtension.swift; sourceTree = "<group>"; };
+		8E43CE922350541300AD66D2 /* LocationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPicker.swift; sourceTree = "<group>"; };
 		8E7BCD8C2324AAD60026243F /* BenchwarmersApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BenchwarmersApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E7BCD8F2324AAD60026243F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E7BCD942324AAD60026243F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -147,7 +149,8 @@
 				8EE65F3D23402EA9007C5970 /* DeviceInfoController.swift */,
 				8E43CE8A235035BA00AD66D2 /* AlertExtension.swift */,
 				8E43CE8E235043E600AD66D2 /* DeviceEditController.swift */,
-				8E43CE902350467C00AD66D2 /* DeviceController.swift */,
+				8E43CE902350467C00AD66D2 /* FormattingExtension.swift */,
+				8E43CE922350541300AD66D2 /* LocationPicker.swift */,
 			);
 			path = BenchwarmersApp;
 			sourceTree = "<group>";
@@ -427,9 +430,10 @@
 				8EE65F3E23402EA9007C5970 /* DeviceInfoController.swift in Sources */,
 				8E7BCD902324AAD60026243F /* AppDelegate.swift in Sources */,
 				8E43CE8B235035BA00AD66D2 /* AlertExtension.swift in Sources */,
-				8E43CE912350467C00AD66D2 /* DeviceController.swift in Sources */,
+				8E43CE912350467C00AD66D2 /* FormattingExtension.swift in Sources */,
 				8EE65F38233FF07B007C5970 /* HomeController.swift in Sources */,
 				8E43CE8F235043E600AD66D2 /* DeviceEditController.swift in Sources */,
+				8E43CE932350541300AD66D2 /* LocationPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SwiftyJSON
 
-class DeviceController: UIViewController {
+extension UIViewController {
     
     func formatFields(fields: Array<UIView>) {
         for field in fields {
