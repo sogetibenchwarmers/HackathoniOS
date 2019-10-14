@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YxP-rB-PrZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="OBb-6T-HfP">
-                                <rect key="frame" x="84" y="110" width="600" height="250"/>
+                                <rect key="frame" x="184" y="110" width="400" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="DZ1-vx-quG"/>
                                 </constraints>
@@ -50,6 +50,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="cqd-Nc-pDh"/>
                     <connections>
                         <outlet property="btnScanBarcode" destination="RN1-1Q-ke5" id="dgg-Fd-VeA"/>
                         <segue destination="YxP-rB-PrZ" kind="show" identifier="toDeviceInfoController" id="DfE-a0-PQ8"/>
@@ -294,6 +295,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="t3s-5C-uwc"/>
                     </view>
+                    <navigationItem key="navigationItem" id="fW8-YF-EWa"/>
                     <connections>
                         <outlet property="tfAssetTag" destination="Z8M-zS-tCn" id="cuU-kk-HCv"/>
                         <outlet property="tfAssignmentGroup" destination="bC9-7o-WbN" id="IVB-kA-7HF"/>
@@ -608,6 +610,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f09-Vz-4KK"/>
                     </view>
+                    <navigationItem key="navigationItem" id="E2l-fy-SlS"/>
                     <connections>
                         <outlet property="tfAssetTag" destination="kxJ-VC-aHj" id="l3w-PW-Euq"/>
                         <outlet property="tfAssignmentGroup" destination="Wq0-IX-e1z" id="FdE-6q-wuu"/>
@@ -630,19 +633,46 @@
                     <view key="view" contentMode="scaleToFill" id="vl8-Hd-Lnf">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jz-sH-R5T">
+                                <rect key="frame" x="334" y="954" width="100" height="50"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.69019607839999997" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Hfz-Ck-seO"/>
+                                    <constraint firstAttribute="width" constant="100" id="Y22-UD-PGW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="tintColor" red="0.20000000000000001" green="0.69019607839999997" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="JT7-8y-c8W"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0jz-sH-R5T" firstAttribute="centerX" secondItem="vl8-Hd-Lnf" secondAttribute="centerX" id="6Ff-ln-Tlm"/>
+                            <constraint firstItem="j3H-Rh-E3X" firstAttribute="bottom" secondItem="0jz-sH-R5T" secondAttribute="bottom" constant="20" id="bhH-nz-i2M"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="j3H-Rh-E3X"/>
                     </view>
+                    <navigationItem key="navigationItem" id="7wv-6r-wwV"/>
+                    <connections>
+                        <outlet property="btnCancel" destination="0jz-sH-R5T" id="r7O-Yf-uN1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kk6-S9-Lp8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="837"/>
+            <point key="canvasLocation" x="19.53125" y="836.71875"/>
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="600" height="600.5"/>
+        <image name="logo" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="PqZ-wB-H54"/>
+        <segue reference="JT7-8y-c8W"/>
     </inferredMetricsTieBreakers>
 </document>
