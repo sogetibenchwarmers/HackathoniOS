@@ -17,14 +17,14 @@ class DeviceEditController: UIViewController {
     var deviceDataModel: DeviceDataModel?
     let baseAssetUrl = "https://hackathon-netcore-api.azurewebsites.net/api/v1/assets/"
     
-    @IBOutlet weak var tfAssetTag: UITextField!
-    @IBOutlet weak var tfName: UITextField!
-    @IBOutlet weak var tfOwnedBy: UITextField!
+    @IBOutlet weak var tfAssetTag: UITextView!
+    @IBOutlet weak var tfName: UITextView!
+    @IBOutlet weak var tfOwnedBy: UITextView!
     @IBOutlet weak var tvLocation: UITextView!
     @IBOutlet weak var tvSubLocation: UITextView!
-    @IBOutlet weak var tfStatus: UITextField!
-    @IBOutlet weak var tfSupportGroup: UITextField!
-    @IBOutlet weak var tfAssignmentGroup: UITextField!
+    @IBOutlet weak var tfStatus: UITextView!
+    @IBOutlet weak var tfSupportGroup: UITextView!
+    @IBOutlet weak var tfAssignmentGroup: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
