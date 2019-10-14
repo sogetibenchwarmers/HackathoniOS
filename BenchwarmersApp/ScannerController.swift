@@ -19,9 +19,12 @@ class ScannerController: UIViewController, AVCaptureMetadataOutputObjectsDelegat
     var barcodeScanned: ((String) -> Void)?
     var barcodeNotFound: (() -> Void)?
     
+    @IBOutlet weak var btnCancel: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.btnCancel.layer.zPosition = 1
+
         view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
         
