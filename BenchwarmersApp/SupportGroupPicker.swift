@@ -1,8 +1,8 @@
 //
-//  LocationPicker.swift
+//  SupportGroupPicker.swift
 //  BenchwarmersApp
 //
-//  Created by Jordan Cahill on 10/11/19.
+//  Created by Jordan Cahill on 10/13/19.
 //  Copyright © 2019 sogeti-benchwarmers. All rights reserved.
 //
 //  Ref:
@@ -13,24 +13,24 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
-class LocationPicker: BenchwarmersPicker {
+class SupportGroupPicker: BenchwarmersPicker  {
     
-    var locations: Array<JSON>? = nil
+    var supportGroups: Array<JSON>? = nil
     var pickerView = UIPickerView()
     // var selection: JSON? = nil
-    var locationsUrl = "https://hackathon-netcore-api.azurewebsites.net/api/v1/locations"
+    var supportGroupsUrl = "https://hackathon-netcore-api.azurewebsites.net/api/v1/groups"
     
-    func getLocations(completion: @escaping () -> Void) {
-        Alamofire.request(locationsUrl, method: .get).responseJSON {
+    func getSupportGroups(completion: @escaping () -> Void) {
+        Alamofire.request(supportGroupsUrl, method: .get).responseJSON {
             response in
             if response.result.isSuccess {
-                print("received locations data")
-                self.locations = JSON(response.result.value!)["data"].arrayValue
-                self.selection = self.locations![0]
+                print("received support groups data")
+                self.supportGroups = JSON(response.result.value!)["data"].arrayValue
+                self.selection = self.supportGroups![0]
                 completion()
             }
             else {
-                print("error getting locations data")
+                print("error getting support groups data")
                 let json = JSON(response.result.value!)
                 self.displayError(
                     errorTitle: json["title"].stringValue,
@@ -45,15 +45,15 @@ class LocationPicker: BenchwarmersPicker {
     }
     
     override func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return locations!.count
+        return supportGroups!.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return formatLocation(locationJson: locations![row])
+        return supportGroups![row]["name"].stringValue
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selection = locations![row]
+        selection = supportGroups![row]
     }
     
 }

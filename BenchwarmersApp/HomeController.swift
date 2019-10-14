@@ -14,11 +14,6 @@ class HomeController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBOutlet weak var btnScanBarcode: UIButton!
     
-    override func viewDidLoad() {
-        self.btnScanBarcode.layer.cornerRadius = 10
-        self.btnScanBarcode.clipsToBounds = true
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toScannerController" {
