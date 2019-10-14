@@ -42,7 +42,7 @@ class DeviceInfoController: UIViewController {
         formatFields(fields: fields as! Array<UIView>)
         
         // asset tag from ScannerController
-        // self.barcode
+        // tfAssetTag.text = self.barcode!
         
         // known asset tag for demo
         let assetTag = "P1000892"
