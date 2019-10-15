@@ -52,21 +52,14 @@ class DeviceInfoController: UIViewController {
             if response.result.isSuccess {
                 print("received device data")
                 let json = JSON(response.result.value!)
-                
-                // debug ... location, subLocation, status, ownedBy all null
-                // this was supposed to be the asset tag with the most info?
-                // double check with Tom
-                print(json)
-                
                 self.updateModel(json: json)
                 self.updateUI()
             }
             else {
-                print("error getting device data")
-                let json = JSON(response.result.value!)
                 self.displayError(
-                    errorTitle: json["title"].stringValue,
-                    errorMessage: json["detail"].stringValue
+                    errorTitle: "Device Viewing Error",
+                    errorMessage: "Unable to view device info at this time due to an unknown error.",
+                    controller: self
                 )
             }
         }
@@ -77,10 +70,11 @@ class DeviceInfoController: UIViewController {
         deviceDataModel.id = json["id"].stringValue
         deviceDataModel.assetTag = json["assetTag"].stringValue
         deviceDataModel.name = json["name"].stringValue
-        deviceDataModel.ownedBy = json["ownedBy"].stringValue
-        deviceDataModel.location = formatLocation(locationJson: json["location"])
+        deviceDataModel.ownedBy = json["ownedBy"]["name"].stringValue
+        deviceDataModel.ownedById = json["ownedBy"]["id"].stringValue
+        deviceDataModel.location = json["location"]["name"].stringValue
         deviceDataModel.locationId = json["location"]["id"].stringValue
-        deviceDataModel.subLocation = formatLocation(locationJson: json["subLocation"])
+        deviceDataModel.subLocation = json["subLocation"]["name"].stringValue
         deviceDataModel.subLocationId = json["subLocation"]["id"].stringValue
         deviceDataModel.status = json["status"].stringValue
         deviceDataModel.supportGroup = json["supportGroup"]["name"].stringValue

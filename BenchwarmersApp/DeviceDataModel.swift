@@ -15,6 +15,7 @@ class DeviceDataModel {
     var assetTag = ""
     var name = ""
     var ownedBy = ""
+    var ownedById = ""
     var location = ""
     var locationId = ""
     var subLocation = ""

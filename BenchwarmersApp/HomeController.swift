@@ -23,7 +23,11 @@ class HomeController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 self.performSegue(withIdentifier: "toDeviceInfoController", sender: nil)
             }
             controller?.barcodeNotFound = {
-                print("display alert controller at this point")
+                self.displayError(
+                    errorTitle: "Barcode Scanning Error",
+                    errorMessage: "Unable to scan barcode at this time due to an unknown error.",
+                    controller: self
+                )
             }
         }
         else if segue.identifier == "toDeviceInfoController" {

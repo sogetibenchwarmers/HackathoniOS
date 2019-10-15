@@ -22,11 +22,49 @@ extension UIViewController {
     }
     
     func formatLocation(locationJson: JSON) -> String {
-        return locationJson["name"].stringValue +
-            "\n" + locationJson["street"].stringValue +
-            "\n" + locationJson["city"].stringValue +
-            ", " + locationJson["state"].stringValue +
-            ", " + locationJson["zip"].stringValue +
-            "\n" + locationJson["country"].stringValue
+        var formattedLocation = ""
+        
+        if let street = locationJson["street"].string {
+            formattedLocation += street + "\n"
+        }
+        
+        var newLine = false;
+        
+        var citySet = false
+        if let city = locationJson["city"].string {
+            formattedLocation += city
+            citySet = true
+            newLine = true
+        }
+        
+        var stateSet = false
+        if let state = locationJson["state"].string {
+            if citySet {
+                formattedLocation += ", " + state
+            } else {
+                formattedLocation += state
+            }
+            stateSet = true
+            newLine = true
+        }
+        
+        if let zip = locationJson["zip"].string {
+            if citySet || stateSet {
+                formattedLocation += ", " + zip
+            } else {
+                formattedLocation += zip
+            }
+            newLine = true
+        }
+        
+        if let country = locationJson["country"].string {
+            if newLine {
+                formattedLocation += "\n" + country
+            } else {
+                formattedLocation += country
+            }
+        }
+        
+        return formattedLocation
     }
 }

@@ -11,12 +11,10 @@ import Foundation
 
 extension UIViewController {
 
-    func displayError(errorTitle: String, errorMessage: String) {
-        
+    func displayError(errorTitle: String, errorMessage: String, controller: UIViewController) {
+
         let alert = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        self.present(alert, animated: true)
-        
+        controller.present(alert, animated: true)
     }
-    
 }
