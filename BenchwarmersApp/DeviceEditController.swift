@@ -56,10 +56,15 @@ class DeviceEditController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let controller = segue.destination as? DeviceInfoController
+        controller?.barcode = deviceDataModel!.assetTag!
         
         if segue.identifier == "toDeviceInfoControllerOnSubmit" {
             updateModel()
             
+            // this will put Optional objects into the request
+            // Alamofire might turn them into Strings or nil
+            // does not matter until PUT is working
             let requestBody = [
                 "name": deviceDataModel?.name,
                 "locationId": deviceDataModel?.locationId,
@@ -69,7 +74,7 @@ class DeviceEditController: UIViewController {
                 "assignmentGroup": deviceDataModel?.assignmentGroup
             ]
             
-            let assetUrl = baseAssetUrl + deviceDataModel!.assetTag
+            let assetUrl = baseAssetUrl + deviceDataModel!.assetTag!
             Alamofire.request(assetUrl, method: .put, parameters: requestBody as Parameters, encoding: JSONEncoding.default).responseJSON {
                 response in
                 if response.response?.statusCode == 200 {
