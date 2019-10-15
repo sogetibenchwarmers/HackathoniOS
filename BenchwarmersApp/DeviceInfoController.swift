@@ -16,12 +16,12 @@ class DeviceInfoController: UIViewController {
     var deviceDataModel = DeviceDataModel()
     let baseAssetUrl = "https://hackathon-netcore-api.azurewebsites.net/api/v1/assets/"
 
-    @IBOutlet weak var tfAssetTag: UITextField!
-    @IBOutlet weak var tfName: UITextField!
-    @IBOutlet weak var tfOwnedBy: UITextView!
-    @IBOutlet weak var tfStatus: UITextView!
-    @IBOutlet weak var tfSupportGroup: UITextView!
-    @IBOutlet weak var tfAssignmentGroup: UITextView!
+    @IBOutlet weak var tvAssetTag: UITextView!
+    @IBOutlet weak var tvName: UITextView!
+    @IBOutlet weak var tvOwnedBy: UITextView!
+    @IBOutlet weak var tvStatus: UITextView!
+    @IBOutlet weak var tvSupportGroup: UITextView!
+    @IBOutlet weak var tvAssignmentGroup: UITextView!
     @IBOutlet weak var tvSubLocation: UITextView!
     @IBOutlet weak var tvLocation: UITextView!
 
@@ -30,19 +30,19 @@ class DeviceInfoController: UIViewController {
         print("device info controller loading")
         
         let fields = [
-            tfAssetTag,
-            tfName,
-            tfOwnedBy,
-            tfStatus,
-            tfSupportGroup,
-            tfAssignmentGroup,
+            tvAssetTag,
+            tvName,
+            tvOwnedBy,
+            tvStatus,
+            tvSupportGroup,
+            tvAssignmentGroup,
             tvSubLocation,
             tvLocation
         ]
         formatFields(fields: fields as! Array<UIView>)
         
         // asset tag from ScannerController
-        // tfAssetTag.text = self.barcode!
+        // tvAssetTag.text = self.barcode!
         
         // known asset tag for demo
         let assetTag = "P1000892"
@@ -89,12 +89,12 @@ class DeviceInfoController: UIViewController {
      }
 
     func updateUI() {
-        tfAssetTag.text = deviceDataModel.assetTag
-        tfName.text = deviceDataModel.name
-        tfOwnedBy.text = deviceDataModel.ownedBy
-        tfStatus.text = deviceDataModel.status
-        tfSupportGroup.text = deviceDataModel.supportGroup
-        tfAssignmentGroup.text = deviceDataModel.assignmentGroup
+        tvAssetTag.text = deviceDataModel.assetTag
+        tvName.text = deviceDataModel.name
+        tvOwnedBy.text = deviceDataModel.ownedBy
+        tvStatus.text = deviceDataModel.status
+        tvSupportGroup.text = deviceDataModel.supportGroup
+        tvAssignmentGroup.text = deviceDataModel.assignmentGroup
         tvSubLocation.text = deviceDataModel.subLocation
         tvLocation.text = deviceDataModel.location
     }
