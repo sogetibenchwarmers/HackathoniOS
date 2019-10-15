@@ -20,7 +20,7 @@ class HomeController: UIViewController, UIImagePickerControllerDelegate, UINavig
         formatFields(fields: [tfAssetTag] as! Array<UIView>)
     }
     
-    @IBAction func doBtnTypeInBarcode(_ sender: Any) {
+    @IBAction func doBtnTypeInAssetTag(_ sender: Any) {
         tfAssetTag.isHidden = false
     }
     

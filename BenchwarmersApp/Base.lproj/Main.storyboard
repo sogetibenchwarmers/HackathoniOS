@@ -51,7 +51,7 @@
                                     <color key="titleColor" red="0.20000000000000001" green="0.69019607839999997" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="doBtnTypeInBarcode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pRM-He-Qjp"/>
+                                    <action selector="doBtnTypeInAssetTag:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uOR-ab-AWJ"/>
                                 </connections>
                             </button>
                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4SD-cl-9aY" userLabel="tf Asset Tag">
@@ -767,7 +767,7 @@
         <image name="logo" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZXT-Hf-LKa"/>
+        <segue reference="DfE-a0-PQ8"/>
         <segue reference="w80-Ni-Uuu"/>
     </inferredMetricsTieBreakers>
 </document>
