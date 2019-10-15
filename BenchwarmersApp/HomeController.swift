@@ -43,6 +43,9 @@ class HomeController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     errorMessage: "Unable to scan barcode at this time due to an unknown error.",
                     controller: self
                 )
+                // should also cancel the segue at this point
+                // cannot recreate this situation currently so will not
+                // mess with it for now
             }
         }
         else if segue.identifier == "toDeviceInfoController" {
