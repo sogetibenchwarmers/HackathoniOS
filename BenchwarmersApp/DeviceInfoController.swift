@@ -49,7 +49,7 @@ class DeviceInfoController: UIViewController {
         let assetUrl = baseAssetUrl + assetTag
         Alamofire.request(assetUrl, method: .get).responseJSON {
             response in
-            if response.result.isSuccess {
+            if response.response?.statusCode == 200 {
                 print("received device data")
                 let json = JSON(response.result.value!)
                 self.updateModel(json: json)

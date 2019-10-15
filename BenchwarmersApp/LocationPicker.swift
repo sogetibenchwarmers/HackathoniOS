@@ -22,7 +22,7 @@ class LocationPicker: BenchwarmersPicker {
     func getLocations(controller: UIViewController, completion: @escaping () -> Void) {
         Alamofire.request(locationsUrl, method: .get).responseJSON {
             response in
-            if response.result.isSuccess {
+            if response.response?.statusCode == 200 {
                 print("received locations data")
                 self.locations = JSON(response.result.value!)["data"].arrayValue
                 self.selection = self.locations![0]

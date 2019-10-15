@@ -72,10 +72,9 @@ class DeviceEditController: UIViewController {
             let assetUrl = baseAssetUrl + deviceDataModel!.assetTag
             Alamofire.request(assetUrl, method: .put, parameters: requestBody as Parameters, encoding: JSONEncoding.default).responseJSON {
                 response in
-                if response.result.isSuccess {
+                if response.response?.statusCode == 200 {
                     print("updated device data")
-                }
-                else {
+                } else {
                     let controller = segue.destination as! DeviceInfoController
                     self.displayError(
                         errorTitle: "Device Update Error",
