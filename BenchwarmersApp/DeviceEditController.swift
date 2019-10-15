@@ -17,26 +17,26 @@ class DeviceEditController: UIViewController {
     var deviceDataModel: DeviceDataModel?
     let baseAssetUrl = "https://hackathon-netcore-api.azurewebsites.net/api/v1/assets/"
     
-    @IBOutlet weak var tfAssetTag: UITextField!
-    @IBOutlet weak var tfName: UITextField!
-    @IBOutlet weak var tfOwnedBy: UITextField!
+    @IBOutlet weak var tvAssetTag: UITextView!
+    @IBOutlet weak var tvName: UITextView!
+    @IBOutlet weak var tvOwnedBy: UITextView!
     @IBOutlet weak var tvLocation: UITextView!
     @IBOutlet weak var tvSubLocation: UITextView!
-    @IBOutlet weak var tfStatus: UITextField!
-    @IBOutlet weak var tfSupportGroup: UITextField!
-    @IBOutlet weak var tfAssignmentGroup: UITextField!
+    @IBOutlet weak var tvStatus: UITextView!
+    @IBOutlet weak var tvSupportGroup: UITextView!
+    @IBOutlet weak var tvAssignmentGroup: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("device edit controller loading")
         
         let fields = [
-            tfAssetTag,
-            tfName,
-            tfOwnedBy,
-            tfStatus,
-            tfSupportGroup,
-            tfAssignmentGroup,
+            tvAssetTag,
+            tvName,
+            tvOwnedBy,
+            tvStatus,
+            tvSupportGroup,
+            tvAssignmentGroup,
             tvSubLocation,
             tvLocation!
         ]
@@ -45,12 +45,12 @@ class DeviceEditController: UIViewController {
     }
     
     func updateUI() {
-        tfAssetTag.text = deviceDataModel?.assetTag
-        tfName.text = deviceDataModel?.name
-        tfOwnedBy.text = deviceDataModel?.ownedBy
-        tfStatus.text = deviceDataModel?.status
-        tfSupportGroup.text = deviceDataModel?.supportGroup
-        tfAssignmentGroup.text = deviceDataModel?.assignmentGroup
+        tvAssetTag.text = deviceDataModel?.assetTag
+        tvName.text = deviceDataModel?.name
+        tvOwnedBy.text = deviceDataModel?.ownedBy
+        tvStatus.text = deviceDataModel?.status
+        tvSupportGroup.text = deviceDataModel?.supportGroup
+        tvAssignmentGroup.text = deviceDataModel?.assignmentGroup
         tvSubLocation.text = deviceDataModel?.subLocation
         tvLocation.text = deviceDataModel?.location
     }
@@ -90,10 +90,10 @@ class DeviceEditController: UIViewController {
     }
     
     func updateModel() {
-        deviceDataModel?.name = tfName.text!
-        deviceDataModel?.ownedBy = tfOwnedBy.text!
-        deviceDataModel?.status = tfStatus.text!
-        deviceDataModel?.assignmentGroup = tfAssignmentGroup.text!
+        deviceDataModel?.name = tvName.text!
+        deviceDataModel?.ownedBy = tvOwnedBy.text!
+        deviceDataModel?.status = tvStatus.text!
+        deviceDataModel?.assignmentGroup = tvAssignmentGroup.text!
     }
 
     @IBAction func doEditLocation(_ sender: Any) {
@@ -132,7 +132,7 @@ class DeviceEditController: UIViewController {
             self.displayPickerViewModal(title: "Edit Support Group", picker: picker, onEdit: { (selection) in
                 self.deviceDataModel?.supportGroupId = selection["id"].stringValue
                 self.deviceDataModel?.supportGroup = selection["name"].stringValue
-                self.tfSupportGroup.text = selection["name"].stringValue
+                self.tvSupportGroup.text = selection["name"].stringValue
             })
         })
     }
