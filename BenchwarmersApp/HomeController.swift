@@ -11,6 +11,7 @@ import UIKit
 
 class HomeController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var barcode: String?
+    var isSenderDeviceInfo = false
     
     @IBOutlet weak var btnScanBarcode: UIButton!
     @IBOutlet weak var tfAssetTag: UITextField!
@@ -20,13 +21,24 @@ class HomeController: UIViewController, UIImagePickerControllerDelegate, UINavig
         formatFields(fields: [tfAssetTag] as! Array<UIView>)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if isSenderDeviceInfo {
+            tfAssetTag.isHidden = false
+            tfAssetTag.text = barcode
+        }
+        isSenderDeviceInfo = false
+    }
+    
     @IBAction func doBtnTypeInAssetTag(_ sender: Any) {
         tfAssetTag.isHidden = false
     }
     
     @IBAction func doTfAssetTag(_ sender: Any) {
-        barcode = tfAssetTag.text
-        performSegue(withIdentifier: "toDeviceInfoController", sender: tfAssetTag)
+        if tfAssetTag.text != "" {
+            barcode = tfAssetTag.text
+            performSegue(withIdentifier: "toDeviceInfoController", sender: tfAssetTag)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

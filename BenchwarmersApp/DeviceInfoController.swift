@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import SVProgressHUD
 
 class DeviceInfoController: UIViewController {
     
@@ -40,18 +41,26 @@ class DeviceInfoController: UIViewController {
             tvLocation
         ]
         formatFields(fields: fields as! Array<UIView>)
-
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
         // known asset tag for demo
         // "P1000892"
         
         // just in case assetTag doesn't come in the GET request
         // ensure it is in the model since we force unwrap in
         // DeviceEditController
+        
         deviceDataModel.assetTag = self.barcode!
         
         let assetUrl = baseAssetUrl + self.barcode!
+        
+        SVProgressHUD.show(withStatus: "Loading...")
         Alamofire.request(assetUrl, method: .get).responseJSON {
             response in
+            print("\n\nmaking request\n\n")
             if response.response?.statusCode == 200 {
                 print("received device data")
                 let json = JSON(response.result.value!)
@@ -62,16 +71,19 @@ class DeviceInfoController: UIViewController {
                     errorTitle: "Device Viewing Error",
                     errorMessage: "This asset tag is not associated with any devices.",
                     controller: self,
-                    action: {() in self.performSegue(withIdentifier: "toHomeController", sender: self)}
+                    action: {() in self.performSegue(withIdentifier: "toHomeControllerBcError", sender: self)}
                 )
             }
             else {
                 self.displayError(
                     errorTitle: "Device Viewing Error",
                     errorMessage: "Unable to view device info at this time due to an unknown error.",
-                    controller: self
+                    controller: self,
+                    action: {() in self.performSegue(withIdentifier: "toHomeControllerBcError", sender: self)}
                 )
+                
             }
+            SVProgressHUD.dismiss()
         }
         
     }
@@ -108,6 +120,11 @@ class DeviceInfoController: UIViewController {
         if segue.identifier == "toDeviceEditController" {
             let controller = segue.destination as? DeviceEditController
             controller?.deviceDataModel = self.deviceDataModel
+        }
+        if segue.identifier == "toHomeControllerBcError" {
+            let controller = segue.destination as? HomeController
+            controller?.isSenderDeviceInfo = true
+            controller?.barcode = barcode
         }
     
     }

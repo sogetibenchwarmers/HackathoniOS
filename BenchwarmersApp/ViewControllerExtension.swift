@@ -23,8 +23,16 @@ extension UIViewController {
     
     func displayError(errorTitle: String, errorMessage: String, controller: UIViewController, action: @escaping () -> Void = {}) {
         
-        let alert = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: {(alert: UIAlertAction!) in action()}))
+        let alert = UIAlertController(title: "", message: errorMessage, preferredStyle: .alert)
+        
+        let titleColor:[NSAttributedString.Key : AnyObject] = [ NSAttributedString.Key.foregroundColor : UIColor(red: 0.92, green: 0.04, blue: 0.10, alpha: 1.0) ]
+        let attributedTitle = NSMutableAttributedString(string: errorTitle, attributes: titleColor)
+        alert.setValue(attributedTitle, forKey: "attributedTitle")
+        
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: {(alert: UIAlertAction!) in action()})
+        okAction.setValue(UIColor.darkText, forKey: "titleTextColor")
+        
+        alert.addAction(okAction)
         controller.present(alert, animated: true)
     }
 }
