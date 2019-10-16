@@ -17,24 +17,22 @@ class LocationPicker: BenchwarmersPicker {
     
     var locations: Array<JSON>? = nil
     var pickerView = UIPickerView()
-    // var selection: JSON? = nil
     var locationsUrl = "https://hackathon-netcore-api.azurewebsites.net/api/v1/locations"
     
-    func getLocations(completion: @escaping () -> Void) {
+    func getLocations(controller: UIViewController, completion: @escaping () -> Void) {
         Alamofire.request(locationsUrl, method: .get).responseJSON {
             response in
-            if response.result.isSuccess {
+            if response.response?.statusCode == 200 {
                 print("received locations data")
                 self.locations = JSON(response.result.value!)["data"].arrayValue
                 self.selection = self.locations![0]
                 completion()
             }
             else {
-                print("error getting locations data")
-                let json = JSON(response.result.value!)
                 self.displayError(
-                    errorTitle: json["title"].stringValue,
-                    errorMessage: json["detail"].stringValue
+                    errorTitle: "Location Listing Error",
+                    errorMessage: "Unable to show location listing at this time due to an unknown error.",
+                    controller: controller
                 )
             }
         }
@@ -49,7 +47,7 @@ class LocationPicker: BenchwarmersPicker {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return formatLocation(locationJson: locations![row])
+        return locations![row]["name"].stringValue
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

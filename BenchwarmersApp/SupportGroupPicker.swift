@@ -17,24 +17,22 @@ class SupportGroupPicker: BenchwarmersPicker  {
     
     var supportGroups: Array<JSON>? = nil
     var pickerView = UIPickerView()
-    // var selection: JSON? = nil
     var supportGroupsUrl = "https://hackathon-netcore-api.azurewebsites.net/api/v1/groups"
     
-    func getSupportGroups(completion: @escaping () -> Void) {
+    func getSupportGroups(controller: UIViewController, completion: @escaping () -> Void) {
         Alamofire.request(supportGroupsUrl, method: .get).responseJSON {
             response in
-            if response.result.isSuccess {
+            if response.response?.statusCode == 200 {
                 print("received support groups data")
                 self.supportGroups = JSON(response.result.value!)["data"].arrayValue
                 self.selection = self.supportGroups![0]
                 completion()
             }
             else {
-                print("error getting support groups data")
-                let json = JSON(response.result.value!)
                 self.displayError(
-                    errorTitle: json["title"].stringValue,
-                    errorMessage: json["detail"].stringValue
+                    errorTitle: "Support Group Listing Error",
+                    errorMessage: "Unable to show support group listing at this time due to an unknown error.",
+                    controller: controller
                 )
             }
         }

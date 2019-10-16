@@ -13,6 +13,21 @@ class HomeController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var barcode: String?
     
     @IBOutlet weak var btnScanBarcode: UIButton!
+    @IBOutlet weak var tfAssetTag: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        formatFields(fields: [tfAssetTag] as! Array<UIView>)
+    }
+    
+    @IBAction func doBtnTypeInAssetTag(_ sender: Any) {
+        tfAssetTag.isHidden = false
+    }
+    
+    @IBAction func doTfAssetTag(_ sender: Any) {
+        barcode = tfAssetTag.text
+        performSegue(withIdentifier: "toDeviceInfoController", sender: tfAssetTag)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -23,7 +38,14 @@ class HomeController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 self.performSegue(withIdentifier: "toDeviceInfoController", sender: nil)
             }
             controller?.barcodeNotFound = {
-                print("display alert controller at this point")
+                self.displayError(
+                    errorTitle: "Barcode Scanning Error",
+                    errorMessage: "Unable to scan barcode at this time due to an unknown error.",
+                    controller: self
+                )
+                // should also cancel the segue at this point
+                // cannot recreate this situation currently so will not
+                // mess with it for now
             }
         }
         else if segue.identifier == "toDeviceInfoController" {

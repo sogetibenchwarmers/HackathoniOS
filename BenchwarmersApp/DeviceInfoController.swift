@@ -40,33 +40,36 @@ class DeviceInfoController: UIViewController {
             tvLocation
         ]
         formatFields(fields: fields as! Array<UIView>)
-        
-        // asset tag from ScannerController
-        // tvAssetTag.text = self.barcode!
-        
+
         // known asset tag for demo
-        let assetTag = "P1000892"
-        let assetUrl = baseAssetUrl + assetTag
+        // "P1000892"
+        
+        // just in case assetTag doesn't come in the GET request
+        // ensure it is in the model since we force unwrap in
+        // DeviceEditController
+        deviceDataModel.assetTag = self.barcode!
+        
+        let assetUrl = baseAssetUrl + self.barcode!
         Alamofire.request(assetUrl, method: .get).responseJSON {
             response in
-            if response.result.isSuccess {
+            if response.response?.statusCode == 200 {
                 print("received device data")
                 let json = JSON(response.result.value!)
-                
-                // debug ... location, subLocation, status, ownedBy all null
-                // this was supposed to be the asset tag with the most info?
-                // double check with Tom
-                print(json)
-                
                 self.updateModel(json: json)
                 self.updateUI()
+            } else if response.response?.statusCode == 404 {
+                self.displayError(
+                    errorTitle: "Device Viewing Error",
+                    errorMessage: "This asset tag is not associated with any devices.",
+                    controller: self,
+                    action: {() in self.performSegue(withIdentifier: "toHomeController", sender: self)}
+                )
             }
             else {
-                print("error getting device data")
-                let json = JSON(response.result.value!)
                 self.displayError(
-                    errorTitle: json["title"].stringValue,
-                    errorMessage: json["detail"].stringValue
+                    errorTitle: "Device Viewing Error",
+                    errorMessage: "Unable to view device info at this time due to an unknown error.",
+                    controller: self
                 )
             }
         }
@@ -74,18 +77,19 @@ class DeviceInfoController: UIViewController {
     }
     
      func updateModel(json: JSON) {
-        deviceDataModel.id = json["id"].stringValue
-        deviceDataModel.assetTag = json["assetTag"].stringValue
-        deviceDataModel.name = json["name"].stringValue
-        deviceDataModel.ownedBy = json["ownedBy"].stringValue
-        deviceDataModel.location = formatLocation(locationJson: json["location"])
-        deviceDataModel.locationId = json["location"]["id"].stringValue
-        deviceDataModel.subLocation = formatLocation(locationJson: json["subLocation"])
-        deviceDataModel.subLocationId = json["subLocation"]["id"].stringValue
-        deviceDataModel.status = json["status"].stringValue
-        deviceDataModel.supportGroup = json["supportGroup"]["name"].stringValue
-        deviceDataModel.supportGroupId = json["supportGroup"]["id"].stringValue
-        deviceDataModel.assignmentGroup = json["assignmentGroup"].stringValue
+        deviceDataModel.id = json["id"].string
+        deviceDataModel.assetTag = json["assetTag"].string
+        deviceDataModel.name = json["name"].string
+        deviceDataModel.ownedBy = json["ownedBy"]["name"].string
+        deviceDataModel.ownedById = json["ownedBy"]["id"].string
+        deviceDataModel.location = json["location"]["name"].string
+        deviceDataModel.locationId = json["location"]["id"].string
+        deviceDataModel.subLocation = json["subLocation"]["name"].string
+        deviceDataModel.subLocationId = json["subLocation"]["id"].string
+        deviceDataModel.status = json["status"].string
+        deviceDataModel.supportGroup = json["supportGroup"]["name"].string
+        deviceDataModel.supportGroupId = json["supportGroup"]["id"].string
+        deviceDataModel.assignmentGroup = json["assignmentGroup"].string
      }
 
     func updateUI() {

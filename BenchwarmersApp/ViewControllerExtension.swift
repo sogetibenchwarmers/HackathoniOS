@@ -21,12 +21,10 @@ extension UIViewController {
         }
     }
     
-    func formatLocation(locationJson: JSON) -> String {
-        return locationJson["name"].stringValue +
-            "\n" + locationJson["street"].stringValue +
-            "\n" + locationJson["city"].stringValue +
-            ", " + locationJson["state"].stringValue +
-            ", " + locationJson["zip"].stringValue +
-            "\n" + locationJson["country"].stringValue
+    func displayError(errorTitle: String, errorMessage: String, controller: UIViewController, action: @escaping () -> Void = {}) {
+        
+        let alert = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: {(alert: UIAlertAction!) in action()}))
+        controller.present(alert, animated: true)
     }
 }
