@@ -68,16 +68,16 @@ class DeviceInfoController: UIViewController {
                 self.updateUI()
             } else if response.response?.statusCode == 404 {
                 self.displayError(
-                    errorTitle: "Device Viewing Error",
-                    errorMessage: "This asset tag is not associated with any devices.",
+                    errorTitle: "This asset tag is not associated with any devices",
+                    errorMessage: "",
                     controller: self,
                     action: {() in self.performSegue(withIdentifier: "toHomeControllerBcError", sender: self)}
                 )
             }
             else {
                 self.displayError(
-                    errorTitle: "Device Viewing Error",
-                    errorMessage: "Unable to view device info at this time due to an unknown error.",
+                    errorTitle: "This asset tag is not associated with any devices",
+                    errorMessage: "",
                     controller: self,
                     action: {() in self.performSegue(withIdentifier: "toHomeControllerBcError", sender: self)}
                 )

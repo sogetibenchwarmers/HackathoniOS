@@ -18,6 +18,8 @@
 		8E7BCD9A2324AAD80026243F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E7BCD982324AAD80026243F /* LaunchScreen.storyboard */; };
 		8E7BCDA52324AAD90026243F /* BenchwarmersAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7BCDA42324AAD90026243F /* BenchwarmersAppTests.swift */; };
 		8E7BCDB02324AAD90026243F /* BenchwarmersAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7BCDAF2324AAD90026243F /* BenchwarmersAppUITests.swift */; };
+		8EDD30582357D74300E7673A /* DepartmentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDD30572357D74300E7673A /* DepartmentPicker.swift */; };
+		8EDD305A2357D8E300E7673A /* OwnedByPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDD30592357D8E300E7673A /* OwnedByPicker.swift */; };
 		8EE65F38233FF07B007C5970 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE65F37233FF07B007C5970 /* HomeController.swift */; };
 		8EE65F3C23401285007C5970 /* ScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE65F3B23401285007C5970 /* ScannerController.swift */; };
 		8EE65F3E23402EA9007C5970 /* DeviceInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE65F3D23402EA9007C5970 /* DeviceInfoController.swift */; };
@@ -66,6 +68,8 @@
 		8E7BCDAB2324AAD90026243F /* BenchwarmersAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BenchwarmersAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E7BCDAF2324AAD90026243F /* BenchwarmersAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenchwarmersAppUITests.swift; sourceTree = "<group>"; };
 		8E7BCDB12324AAD90026243F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8EDD30572357D74300E7673A /* DepartmentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentPicker.swift; sourceTree = "<group>"; };
+		8EDD30592357D8E300E7673A /* OwnedByPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedByPicker.swift; sourceTree = "<group>"; };
 		8EE65F37233FF07B007C5970 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		8EE65F3B23401285007C5970 /* ScannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerController.swift; sourceTree = "<group>"; };
 		8EE65F3D23402EA9007C5970 /* DeviceInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoController.swift; sourceTree = "<group>"; };
@@ -154,6 +158,8 @@
 				8E43CE922350541300AD66D2 /* LocationPicker.swift */,
 				8E38BD1123540B3500CFFDE1 /* SupportGroupPicker.swift */,
 				8E38BD1323540F2C00CFFDE1 /* BenchwarmersPicker.swift */,
+				8EDD30572357D74300E7673A /* DepartmentPicker.swift */,
+				8EDD30592357D8E300E7673A /* OwnedByPicker.swift */,
 			);
 			path = BenchwarmersApp;
 			sourceTree = "<group>";
@@ -432,10 +438,12 @@
 				8EE65F3C23401285007C5970 /* ScannerController.swift in Sources */,
 				8EE65F3E23402EA9007C5970 /* DeviceInfoController.swift in Sources */,
 				8E38BD1223540B3500CFFDE1 /* SupportGroupPicker.swift in Sources */,
+				8EDD305A2357D8E300E7673A /* OwnedByPicker.swift in Sources */,
 				8E7BCD902324AAD60026243F /* AppDelegate.swift in Sources */,
 				8E38BD1423540F2C00CFFDE1 /* BenchwarmersPicker.swift in Sources */,
 				8E43CE912350467C00AD66D2 /* ViewControllerExtension.swift in Sources */,
 				8EE65F38233FF07B007C5970 /* HomeController.swift in Sources */,
+				8EDD30582357D74300E7673A /* DepartmentPicker.swift in Sources */,
 				8E43CE8F235043E600AD66D2 /* DeviceEditController.swift in Sources */,
 				8E43CE932350541300AD66D2 /* LocationPicker.swift in Sources */,
 			);
