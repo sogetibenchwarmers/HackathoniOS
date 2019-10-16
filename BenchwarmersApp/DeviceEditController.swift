@@ -42,6 +42,10 @@ class DeviceEditController: UIViewController {
             tvLocation!
         ]
         formatFields(fields: fields as! Array<UIView>)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         updateUI()
     }
     
@@ -59,8 +63,11 @@ class DeviceEditController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let controller = segue.destination as? DeviceInfoController
         controller?.barcode = deviceDataModel!.assetTag!
-        
-        if segue.identifier == "toDeviceInfoControllerOnSubmit" {
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String?, sender: Any?) -> Bool {
+        if identifier == "toDeviceInfoControllerOnSubmit" {
+            var performSegue = false
             updateModel()
             
             // this will put Optional objects into the request
@@ -81,19 +88,21 @@ class DeviceEditController: UIViewController {
             Alamofire.request(assetUrl, method: .put, parameters: requestBody as Parameters, encoding: JSONEncoding.default).responseJSON {
                 response in
                 if response.response?.statusCode == 200 {
-                    print("updated device data")
+                    performSegue = true
                 } else {
-                    let controller = segue.destination as! DeviceInfoController
                     self.displayError(
                         errorTitle: "Device Update Error",
                         errorMessage: "Unable to update the device at this time due to an unknown error.",
-                        controller: controller
+                        controller: self
                     )
                 }
                 SVProgressHUD.dismiss()
             }
-            
+            return performSegue
         }
+        // otherwise the cancel option was selected
+        // always perform segue for cancel option
+        return true
         
     }
     

@@ -19,7 +19,10 @@ class HomeController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         formatFields(fields: [tfAssetTag] as! Array<UIView>)
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         if isSenderDeviceInfo {
             tfAssetTag.isHidden = false
             tfAssetTag.text = barcode

@@ -41,13 +41,18 @@ class DeviceInfoController: UIViewController {
             tvLocation
         ]
         formatFields(fields: fields as! Array<UIView>)
-
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
         // known asset tag for demo
         // "P1000892"
         
         // just in case assetTag doesn't come in the GET request
         // ensure it is in the model since we force unwrap in
         // DeviceEditController
+        
         deviceDataModel.assetTag = self.barcode!
         
         let assetUrl = baseAssetUrl + self.barcode!
@@ -55,6 +60,7 @@ class DeviceInfoController: UIViewController {
         SVProgressHUD.show(withStatus: "Loading...")
         Alamofire.request(assetUrl, method: .get).responseJSON {
             response in
+            print("\n\nmaking request\n\n")
             if response.response?.statusCode == 200 {
                 print("received device data")
                 let json = JSON(response.result.value!)
