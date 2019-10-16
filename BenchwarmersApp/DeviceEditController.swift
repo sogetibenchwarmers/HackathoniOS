@@ -11,6 +11,7 @@ import Foundation
 import UIKit
 import Alamofire
 import SwiftyJSON
+import SVProgressHUD
 
 class DeviceEditController: UIViewController {
     
@@ -75,6 +76,8 @@ class DeviceEditController: UIViewController {
             ]
             
             let assetUrl = baseAssetUrl + deviceDataModel!.assetTag!
+            
+            SVProgressHUD.show(withStatus: "Loading...")
             Alamofire.request(assetUrl, method: .put, parameters: requestBody as Parameters, encoding: JSONEncoding.default).responseJSON {
                 response in
                 if response.response?.statusCode == 200 {
@@ -87,6 +90,7 @@ class DeviceEditController: UIViewController {
                         controller: controller
                     )
                 }
+                SVProgressHUD.dismiss()
             }
             
         }
@@ -144,10 +148,15 @@ class DeviceEditController: UIViewController {
         pickerFrame.dataSource = picker
         pickerFrame.delegate = picker
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
             onEdit(picker.selection!)
-        }))
+        })
+        cancelAction.setValue(UIColor(red: 0.20, green: 0.69, blue: 0.90, alpha: 1.0), forKey: "titleTextColor")
+        okAction.setValue(UIColor(red: 0.20, green: 0.69, blue: 0.90, alpha: 1.0), forKey: "titleTextColor")
+        
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
         self.present(alert,animated: true, completion: nil )
     }
 }
