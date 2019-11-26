@@ -35,4 +35,19 @@ extension UIViewController {
         alert.addAction(okAction)
         controller.present(alert, animated: true)
     }
+    
+    func displaySuccess(successTitle: String, successMessage: String, controller: UIViewController, action: @escaping () -> Void = {}) {
+        
+        let alert = UIAlertController(title: "", message: successMessage, preferredStyle: .alert)
+        
+        let titleColor:[NSAttributedString.Key : AnyObject] = [ NSAttributedString.Key.foregroundColor : UIColor(red: 0.00, green: 0.69, blue: 0.27, alpha: 1.0) ]
+        let attributedTitle = NSMutableAttributedString(string: successTitle, attributes: titleColor)
+        alert.setValue(attributedTitle, forKey: "attributedTitle")
+        
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: {(alert: UIAlertAction!) in action()})
+        okAction.setValue(UIColor.darkText, forKey: "titleTextColor")
+        
+        alert.addAction(okAction)
+        controller.present(alert, animated: true)
+    }
 }

@@ -63,22 +63,16 @@ class DeviceEditController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let controller = segue.destination as? DeviceInfoController
         controller?.barcode = deviceDataModel!.assetTag!
-    }
-    
-    override func shouldPerformSegue(withIdentifier identifier: String?, sender: Any?) -> Bool {
-        if identifier == "toDeviceInfoControllerOnSubmit" {
-            var performSegue = false
+        
+        if segue.identifier == "toDeviceInfoControllerOnSubmit" {
             updateModel()
             
-            // this will put Optional objects into the request
-            // Alamofire might turn them into Strings or nil
-            // does not matter until PUT is working
             let requestBody = [
-                "name": deviceDataModel?.name,
+                "id": deviceDataModel?.id,
                 "locationId": deviceDataModel?.locationId,
-                "sublocationId": deviceDataModel?.subLocationId,
-                "status": deviceDataModel?.status,
+                "subLocationId": deviceDataModel?.subLocationId,
                 "supportGroupId": deviceDataModel?.supportGroupId,
+                "ownedById": deviceDataModel?.ownedById,
                 "assignmentGroup": deviceDataModel?.assignmentGroup
             ]
             
@@ -88,8 +82,15 @@ class DeviceEditController: UIViewController {
             Alamofire.request(assetUrl, method: .put, parameters: requestBody as Parameters, encoding: JSONEncoding.default).responseJSON {
                 response in
                 if response.response?.statusCode == 200 {
-                    performSegue = true
+                    self.displaySuccess(
+                        successTitle: "Device Updated Successfully",
+                        successMessage: "",
+                        controller: controller!
+                    )
                 } else {
+                    // should never happen!!
+                    // in real life, we would want to STOP the segue if the
+                    // edit fails but we are assuming the PUT will always work
                     self.displayError(
                         errorTitle: "Device Update Error",
                         errorMessage: "Unable to update the device at this time due to an unknown error.",
@@ -98,12 +99,7 @@ class DeviceEditController: UIViewController {
                 }
                 SVProgressHUD.dismiss()
             }
-            return performSegue
         }
-        // otherwise the cancel option was selected
-        // always perform segue for cancel option
-        return true
-        
     }
     
     func updateModel() {
@@ -111,7 +107,18 @@ class DeviceEditController: UIViewController {
         deviceDataModel?.status = tvStatus.text!
         deviceDataModel?.assignmentGroup = tvAssignmentGroup.text!
     }
-
+    
+    @IBAction func doEditOwnedBy(_ sender: Any) {
+        let picker = OwnedByPicker()
+        picker.getUsers(controller: self, completion: { () in
+            self.displayPickerViewModal(title: "Edit Owned By", picker: picker, onEdit: { (selection) in
+                self.deviceDataModel?.ownedById = selection["id"].stringValue
+                self.deviceDataModel?.ownedBy = selection["name"].stringValue
+                self.tvOwnedBy.text = selection["name"].stringValue
+            })
+        })
+    }
+    
     @IBAction func doEditLocation(_ sender: Any) {
         let picker = LocationPicker()
         picker.getLocations(controller: self, completion: { () in
@@ -124,9 +131,9 @@ class DeviceEditController: UIViewController {
     }
     
     @IBAction func doEditSubLocation(_ sender: Any) {
-        let picker = LocationPicker()
-        picker.getLocations(controller: self, completion: { () in
-            self.displayPickerViewModal(title: "Edit Sub Location", picker: picker, onEdit: { (selection) in
+        let picker = DepartmentPicker()
+        picker.getDepartments(controller: self, completion: { () in
+            self.displayPickerViewModal(title: "Edit Department", picker: picker, onEdit: { (selection) in
                 self.deviceDataModel?.subLocationId = selection["id"].stringValue
                 self.deviceDataModel?.subLocation = selection["name"].stringValue
                 self.tvSubLocation.text = selection["name"].stringValue
